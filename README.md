@@ -1,6 +1,6 @@
-# Upload Toni Pro
+# POD Marketplace Tools
 
-Upload Toni Pro là một ứng dụng Desktop (sử dụng PySide6) được thiết kế để tự động hóa quy trình upload sản phẩm POD (Print on Demand) lên nền tảng Walmart.
+POD Marketplace Tools là một ứng dụng Desktop (sử dụng PySide6) được thiết kế để tự động hóa quy trình upload sản phẩm POD (Print on Demand) lên nền tảng Walmart.
 
 ## 🚀 Tính năng chính
 
@@ -50,8 +50,8 @@ Yêu cầu hệ thống: Python 3.11+
 Dự án này đã được tích hợp **GitHub Actions** để tự động build thành phần mềm hoàn chỉnh cho macOS và Windows mà không cần cài đặt Python.
 
 1. Mỗi khi bạn đẩy code (push) lên nhánh `main`, hệ thống sẽ tự động build thử nghiệm:
-   - File `Upload-Toni-Windows.exe`
-   - File `Upload-Toni-MacOS.zip` (chứa file `.app`)
+   - File `POD_Marketplace_Windows.exe`
+   - File `POD_Marketplace_MacOS.zip` (chứa file `.app`)
 
 2. **Cách tạo phiên bản chính thức (Release)**:
    Để tạo link tải về chính thức, bạn chỉ cần gán thẻ (tag) trên git:

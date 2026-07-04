@@ -14,13 +14,13 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            artifact_name: Upload-Toni-Windows
-            asset_name: Upload-Toni-Windows.exe
-            pyinstaller_args: "--windowed --name Upload-Toni-Windows main.py"
+            artifact_name: POD_Marketplace_Windows
+            asset_name: POD_Marketplace_Windows.exe
+            pyinstaller_args: "--windowed --name POD_Marketplace_Windows main.py"
           - os: macos-latest
-            artifact_name: Upload-Toni-MacOS
-            asset_name: Upload-Toni-MacOS.app
-            pyinstaller_args: "--windowed --name Upload-Toni-MacOS main.py"
+            artifact_name: POD_Marketplace_MacOS
+            asset_name: POD_Marketplace_MacOS.app
+            pyinstaller_args: "--windowed --name POD_Marketplace_MacOS main.py"
 
     steps:
       - name: Checkout Code
@@ -45,7 +45,7 @@ jobs:
         if: matrix.os == 'macos-latest'
         run: |
           cd dist
-          zip -r Upload-Toni-MacOS.zip Upload-Toni-MacOS.app
+          zip -r POD_Marketplace_MacOS.zip POD_Marketplace_MacOS.app
           cd ..
 
       - name: Upload Artifact
@@ -75,7 +75,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            artifacts/Upload-Toni-Windows/Upload-Toni-Windows.exe
-            artifacts/Upload-Toni-MacOS/Upload-Toni-MacOS.zip
+            artifacts/POD_Marketplace_Windows/POD_Marketplace_Windows.exe
+            artifacts/POD_Marketplace_MacOS/POD_Marketplace_MacOS.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
