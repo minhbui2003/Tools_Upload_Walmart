@@ -14,13 +14,13 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            artifact_name: POD_Marketplace_Windows
-            asset_name: POD_Marketplace_Windows.exe
-            pyinstaller_args: "--windowed --name POD_Marketplace_Windows main.py"
+            artifact_name: build-windows
+            pyinstaller_args: "--windowed --name POD_Marketplace main.py"
+            upload_path: dist/POD_Marketplace.exe
           - os: macos-latest
-            artifact_name: POD_Marketplace_MacOS
-            asset_name: POD_Marketplace_MacOS.app
-            pyinstaller_args: "--windowed --name POD_Marketplace_MacOS main.py"
+            artifact_name: build-macos
+            pyinstaller_args: "--windowed --name POD_Marketplace main.py"
+            upload_path: dist/POD_Marketplace.zip
 
     steps:
       - name: Checkout Code
@@ -45,16 +45,14 @@ jobs:
         if: matrix.os == 'macos-latest'
         run: |
           cd dist
-          zip -r POD_Marketplace_MacOS.zip POD_Marketplace_MacOS.app
+          zip -r POD_Marketplace.zip POD_Marketplace.app
           cd ..
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact_name }}
-          path: |
-            dist/${{ matrix.artifact_name }}.exe
-            dist/${{ matrix.artifact_name }}.zip
+          path: ${{ matrix.upload_path }}
 
   release:
     name: Create Release
@@ -75,7 +73,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            artifacts/POD_Marketplace_Windows/POD_Marketplace_Windows.exe
-            artifacts/POD_Marketplace_MacOS/POD_Marketplace_MacOS.zip
+            artifacts/build-windows/POD_Marketplace.exe
+            artifacts/build-macos/POD_Marketplace.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
