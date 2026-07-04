@@ -22,7 +22,7 @@ jobs:
             upload_path: dist/POD_Marketplace.exe
           - os: macos-latest
             artifact_name: build-macos
-            pyinstaller_args: "--windowed --name POD_Marketplace main.py"
+            pyinstaller_args: "--onedir --windowed --name POD_Marketplace main.py"
             upload_path: dist/POD_Marketplace.zip
 
     steps:
