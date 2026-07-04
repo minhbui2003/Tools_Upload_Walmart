@@ -1,0 +1,84 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+clean_venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ================================
+# HEAVY RESOURCES & EXCEL FILES
+# ================================
+# Ignore all excel files
+*.xlsx
+*.xls
+*.csv
+
+# Ignore all images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.ico
+*.svg
+
+# Ignore all data/media folders
+120526TA1-*/
+Fix/
+Nas/
+Update/
+sample-files/
+swatch_color/
+templates/
+Product_Profiles_Template.xlsx
+Marketplace-Product Info.xlsx
+Product type.xlsx
+test_mapping.xlsx
+
+# Credentials
+secret.json
+credentials.json

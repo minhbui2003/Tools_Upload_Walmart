@@ -1,0 +1,12 @@
+
+=== File: SWE_update_file_template.xlsx ===
+Colors: ['Antique Cherry Red', 'Black', 'Military Green', 'Navy', 'Sport Grey']
+Sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL']
+
+=== File: Tshirt_update_file_130526TA5W.xlsx ===
+Colors: ['Black', 'Navy', 'Grey', 'Green']
+Sizes: ['S', 'M', 'L', 'XL', '2XL']
+
+=== File: TSH_W_update_file_template.xlsx ===
+Colors: ['Black', 'Grey', 'Sand', 'White']
+Sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL']
