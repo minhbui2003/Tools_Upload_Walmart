@@ -6,6 +6,9 @@ on:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
   workflow_dispatch: # Allow manual triggering
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build on ${{ matrix.os }}
@@ -15,7 +18,7 @@ jobs:
         include:
           - os: windows-latest
             artifact_name: build-windows
-            pyinstaller_args: "--windowed --name POD_Marketplace main.py"
+            pyinstaller_args: "--onefile --windowed --name POD_Marketplace main.py"
             upload_path: dist/POD_Marketplace.exe
           - os: macos-latest
             artifact_name: build-macos
