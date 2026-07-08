@@ -63,11 +63,15 @@ def format_value_for_seller_column(value, seller_excel_col, seller_col_name):
     if pd.isna(value) or value is None:
         return ""
         
+    cleaned = clean_text(value)
+    
+    # Bắt buộc ép kiểu chuỗi (String) cho cột Fulfillment Center ID
+    if "fulfillment center id" in seller_name:
+        return cleaned
+
     if isinstance(value, (int, float)):
         return value
         
-    cleaned = clean_text(value)
-    
     if len(cleaned) > 1 and cleaned.startswith("0") and not cleaned.startswith("0."):
         return cleaned
         
@@ -345,10 +349,15 @@ def generate_walmart_xlsx_from_getlinks_df(
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_xlsx = os.path.join(output_folder, f"final_walmart_upload_ready_{timestamp}.xlsx")
     log_csv = os.path.join(output_folder, f"mapper_log_{timestamp}.csv")
+    
+    import tempfile
+    temp_dir = tempfile.mkdtemp()
+    temp_xlsx = os.path.join(temp_dir, f"temp_{timestamp}.xlsx")
+    temp_log_csv = os.path.join(temp_dir, f"temp_log_{timestamp}.csv")
 
-    shutil.copy2(seller_template_path, output_xlsx)
+    shutil.copy2(seller_template_path, temp_xlsx)
 
-    wb = load_workbook(output_xlsx)
+    wb = load_workbook(temp_xlsx)
 
     if seller_sheet not in wb.sheetnames:
         raise ValueError(
@@ -487,7 +496,7 @@ def generate_walmart_xlsx_from_getlinks_df(
 
             cell = ws.cell(row=excel_row, column=col_index)
 
-            if clean_text(seller_excel_col).upper() in ["DR", "DS"] or seller_col_name.lower() in ["site start date", "site end date"]:
+            if clean_text(seller_excel_col).upper() in ["DR", "DS"] or seller_col_name.lower() in ["site start date", "site end date", "fulfillment center id"]:
                 cell.number_format = "@"
 
             cell.value = formatted_value
@@ -506,9 +515,9 @@ def generate_walmart_xlsx_from_getlinks_df(
                 "Note": note,
             })
 
-    wb.save(output_xlsx)
+    wb.save(temp_xlsx)
 
-    with open(log_csv, "w", newline="", encoding="utf-8-sig") as f:
+    with open(temp_log_csv, "w", newline="", encoding="utf-8-sig") as f:
         fieldnames = [
             "Excel Row",
             "SKUWA",
@@ -524,5 +533,13 @@ def generate_walmart_xlsx_from_getlinks_df(
 
         for item in logs:
             writer.writerow(item)
+            
+    shutil.copy2(temp_xlsx, output_xlsx)
+    shutil.copy2(temp_log_csv, log_csv)
+    
+    try:
+        shutil.rmtree(temp_dir)
+    except Exception:
+        pass
 
     return output_xlsx, log_csv
