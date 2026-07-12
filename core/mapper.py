@@ -48,7 +48,7 @@ def normalize_date_output(value, mode):
         return text
 
 
-def format_value_for_seller_column(value, seller_excel_col, seller_col_name):
+def format_value_for_seller_column(value, seller_excel_col, seller_col_name, expected_type=None):
     col = clean_text(seller_excel_col).upper()
     seller_name = clean_text(seller_col_name).lower()
 
@@ -68,6 +68,18 @@ def format_value_for_seller_column(value, seller_excel_col, seller_col_name):
     # Bắt buộc ép kiểu chuỗi (String) cho cột Fulfillment Center ID
     if "fulfillment center id" in seller_name:
         return cleaned
+
+    if expected_type == "string":
+        return cleaned
+
+    if expected_type == "number":
+        try:
+            if '.' in cleaned:
+                return float(cleaned)
+            else:
+                return int(cleaned)
+        except ValueError:
+            return cleaned
 
     if isinstance(value, (int, float)):
         return value
@@ -389,6 +401,18 @@ def generate_walmart_xlsx_from_getlinks_df(
     )
     max_col = ws.max_column
 
+    col_expected_types = {}
+    type_row = header_row + 2
+    if type_row <= ws.max_row:
+        for c in range(1, max_col + 1):
+            cell_val = ws.cell(row=type_row, column=c).value
+            if cell_val and isinstance(cell_val, str):
+                val_lower = cell_val.lower()
+                if val_lower.startswith("alphanumeric") or val_lower.startswith("string") or val_lower.startswith("text") or val_lower.startswith("closed list"):
+                    col_expected_types[c] = "string"
+                elif val_lower.startswith("decimal") or val_lower.startswith("number") or val_lower.startswith("integer"):
+                    col_expected_types[c] = "number"
+
     if update_df is not None and not update_df.empty:
         base_df = update_df
         iterate_by = "update"
@@ -488,15 +512,18 @@ def generate_walmart_xlsx_from_getlinks_df(
                 })
                 continue
 
+            expected_type = col_expected_types.get(col_index)
+
             formatted_value = format_value_for_seller_column(
                 value=value,
                 seller_excel_col=seller_excel_col,
                 seller_col_name=seller_col_name,
+                expected_type=expected_type,
             )
 
             cell = ws.cell(row=excel_row, column=col_index)
 
-            if clean_text(seller_excel_col).upper() in ["DR", "DS"] or seller_col_name.lower() in ["site start date", "site end date", "fulfillment center id"]:
+            if expected_type == "string" or clean_text(seller_excel_col).upper() in ["DR", "DS"] or seller_col_name.lower() in ["site start date", "site end date", "fulfillment center id"]:
                 cell.number_format = "@"
 
             cell.value = formatted_value
