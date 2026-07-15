@@ -1,0 +1,85 @@
+Col D (None): 300126TA1UNGT1B00S | Type: str | Format: @
+Col E (None): T-Shirts | Type: str | Format: @
+Col F (Product ID Type): GTIN | Type: str | Format: @
+Col G (Product ID): CUSTOM | Type: str | Format: @
+Col H (Product Name): Jollimate First Grade Shirt, Retro Back to School T Shirt, Cute 1st Grade Teacher Graphic Tee | Type: str | Format: @
+Col I (Brand Name): Jollimate | Type: str | Format: @
+Col J (Selling Price): 23.18 | Type: float | Format: General
+Col K (Shipping Weight (lbs)): 1 | Type: int | Format: General
+Col L (Country of Origin - Substantial Transformation): United States | Type: str | Format: @
+Col M (Fulfillment Center ID): 10001207042 | Type: str | Format: @
+Col N (Inventory Quantity): 100 | Type: int | Format: General
+Col P (Site Description): <p><b>Jollimate First Grade Shirt, Retro Back to School T Shirt, Cute 1st Grade Teacher Graphic Tee</b></p><p>Get ready for the best school year yet with the <b>Jollimate First Grade Shirt</b>! Designed for both passionate teachers and excited students, this vibrant back-to-school t-shirt features a playful, retro doodle design packed with classic classroom motifs like apples, pencils, smiling faces, and bright patterns. Whether it's the first day of school, a classroom celebration, or everyday teacher appreciation, this graphic tee brings a cheerful, nostalgic energy straight to the classroom.</p><p><b>Product Specifications:</b></p><p>• <b>Available Colors:</b> Offered in a versatile palette of essential everyday neutrals: Black, Grey, Sand, and White.</p><p>• <b>Material:</b> Crafted from premium, ultra-soft combed cotton-blend fabrics for breathable, long-lasting comfort during busy school days.</p><p>• <b>Fit:</b> Classic Unisex Fit that runs true to size, offering a relaxed and flattering silhouette for both men and women.</p><p>• <b>Care Instructions:</b> Turn inside out before washing. Machine wash cold with like colors. Tumble dry low. Do not iron directly on the graphic print.</p> | Type: str | Format: @
+Col Q (Key Features (+)): Vibrant Retro Artistry: Features a highly detailed, multi-colored typography design that stands out beautifully against neutral tees. | Type: str | Format: @
+Col R (Key Features 1 (+)): Premium Mid-Weight Comfort: Expertly spun from ultra-soft cotton for a structured, classic look. Keeps your loved ones entirely cool and comfortable during any family squad getaway. | Type: str | Format: @
+Col S (Key Features 2 (+)): Advanced Flex-Fiber Printing: Vibrant inks fuse directly into fabric layers. The high-contrast graphic remains completely flexible, stretchable, and crack-free through countless wash cycles. | Type: str | Format: @
+Col T (Key Features 3 (+)): Perfect Educator & Student Gift: An ideal and thoughtful gift for 1st-grade teachers, teaching assistants, students, and school volunteers welcoming a new academic year. | Type: str | Format: @
+Col U (Key Features 4 (+)): Heavy-Duty Durability: Engineered with reinforced double-needle stitching along the sleeves and bottom hem. Retains its flawless unisex shape and true-to-size fit over long-term wear. | Type: str | Format: @
+Col W (Count Per Pack): 1 | Type: int | Format: General
+Col X (Total Count): 1 | Type: int | Format: General
+Col Y (Multipack Quantity): 1 | Type: int | Format: General
+Col Z (Is Prop 65 Warning Required): No | Type: str | Format: @
+Col AA (Age Group (+)): Adult | Type: str | Format: @
+Col AB (Clothing Neck Style): Crew Neck | Type: str | Format: @
+Col AC (Clothing Size): S | Type: str | Format: @
+Col AD (Clothing Size Group (+)): Women | Type: str | Format: @
+Col AE (Clothing Style (+)): Casual | Type: str | Format: @
+Col AF (Clothing Top Style (+)): Pullover | Type: str | Format: @
+Col AG (Color): Black | Type: str | Format: @
+Col AH (Color Category (+)): Black | Type: str | Format: @
+Col AI (Condition): New | Type: str | Format: @
+Col AJ (Fabric Care Instructions (+)): Hand Wash | Type: str | Format: @
+Col AK (Fabric Material Percentage): 100 | Type: int | Format: General
+Col AL (Fabric Material Name): 100% Cotton | Type: str | Format: @
+Col AM (Gender): Female | Type: str | Format: @
+Col AN (Has Written Warranty): No | Type: str | Format: @
+Col AO (Unit): Each | Type: str | Format: @
+Col AP (Measure): 1 | Type: int | Format: General
+Col AQ (Sleeve Length Style): Short Sleeve | Type: str | Format: @
+Col AR (Small Parts Warning Code (+)): 0 - No warning applicable | Type: str | Format: @
+Col AS (Zippered): No | Type: str | Format: @
+Col AU (Additional Image URL (+)): https://res.cloudinary.com/drfz9p7qn/image/upload/v1779076382/jollimate-marketplace/batch-180526/ci-02.png | Type: str | Format: General
+Col AX (Additional Image URL (+)): https://pub-34114515dcdd49739c75e3e6c0a6595c.r2.dev/20260624091038_Tshirt_N%E1%BB%AF.png | Type: str | Format: General
+Col AY (Additional Image URL (+)): https://res.cloudinary.com/drfz9p7qn/image/upload/v1779076384/jollimate-marketplace/batch-180526/ci-01.png | Type: str | Format: General
+Col AZ (Measure): 30 | Type: int | Format: General
+Col BA (Unit): in | Type: str | Format: @
+Col BB (Measure): 0.2 | Type: float | Format: General
+Col BC (Unit): in | Type: str | Format: @
+Col BD (Measure): 0.4 | Type: float | Format: General
+Col BE (Unit): lb | Type: str | Format: @
+Col BF (Measure): 22 | Type: int | Format: General
+Col BG (Unit): in | Type: str | Format: @
+Col BJ (Certification Type): Neither of these applies | Type: str | Format: @
+Col BP (Clothing Feature (+)): Dry-Fit | Type: str | Format: @
+Col BQ (Clothing Fit): Regular | Type: str | Format: @
+Col BR (Clothing Occasion (+)): Casual | Type: str | Format: @
+Col BS (Clothing Shoulder Style (+)): Drop Shoulder | Type: str | Format: @
+Col BV (Fabric Construction): Knit | Type: str | Format: @
+Col CB (Maximum Order Quantity): 2 | Type: int | Format: General
+Col CC (Minimum Order Quantity): 1 | Type: int | Format: General
+Col CE (Net Content Statement): 6 | Type: str | Format: @
+Col CF (Number of Pieces): 1 | Type: int | Format: General
+Col CI (Personal Relationship (+)): Family | Type: str | Format: @
+Col CQ (Retail Packaging): Single Piece | Type: str | Format: @
+Col CU (T-Shirt Type): Graphic Tees | Type: str | Format: @
+Col CZ (Variant Group ID): 080726TA3TW | Type: str | Format: @
+Col DA (Variant Attribute Names (+)): color | Type: str | Format: @
+Col DB (Is Primary Variant): Yes | Type: str | Format: @
+Col DC (Variant Attribute Names (+)): clothingSize | Type: str | Format: @
+Col DD (Is Primary Variant): No | Type: str | Format: @
+Col DE (Swatch Variant Attribute): color | Type: str | Format: @
+Col DF (Swatch Image URL): https://pub-783c296ecc62496f841784c43c9c7c19.r2.dev/20260617173803_BLACK.jpg | Type: str | Format: General
+Col DI (State Restrictions Reason): None | Type: str | Format: @
+Col DJ (Product is or Contains an Electronic Component?): No | Type: str | Format: @
+Col DK (Product is or Contains a Chemical, Aerosol or Pesticide?): No | Type: str | Format: @
+Col DL (Product is or Contains this Battery Type): Does Not Contain a Battery | Type: str | Format: @
+Col DM (Fulfillment Lag Time): 3 | Type: int | Format: General
+Col DN (Ships in Original Packaging): No | Type: str | Format: @
+Col DO (Must ship alone?): No | Type: str | Format: @
+Col DP (Is Preorder): No | Type: str | Format: @
+Col DR (Site Start Date): 2026-07-15 00:00:00 | Type: str | Format: @
+Col DS (Site End Date): 2056-12-18 | Type: str | Format: @
+Col EB (Product Package Weight (lbs)): 0.5 | Type: float | Format: General
+Col EC (Product Package Dimensions Depth (in)): 12 | Type: int | Format: General
+Col ED (Product Package Dimensions Width (in)): 9 | Type: int | Format: General
+Col EE (Product Package Dimensions Height (in)): 1 | Type: int | Format: General
