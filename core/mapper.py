@@ -564,6 +564,24 @@ def generate_walmart_xlsx_from_getlinks_df(
     shutil.copy2(temp_xlsx, output_xlsx)
     shutil.copy2(temp_log_csv, log_csv)
     
+    # Auto re-save with Microsoft Excel to fix openpyxl internal XML quirks for Walmart
+    try:
+        import win32com.client as win32
+        import pythoncom
+        pythoncom.CoInitialize()
+        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        excel.Visible = False
+        excel.DisplayAlerts = False
+        wb_excel = excel.Workbooks.Open(os.path.abspath(output_xlsx))
+        wb_excel.Save()
+        wb_excel.Close(SaveChanges=True)
+        excel.Quit()
+        if log_callback:
+            log_callback("File optimized successfully using Microsoft Excel.")
+    except Exception as e:
+        if log_callback:
+            log_callback(f"Excel optimization skipped: {e}")
+    
     try:
         shutil.rmtree(temp_dir)
     except Exception:
