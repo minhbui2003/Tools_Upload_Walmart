@@ -526,7 +526,10 @@ def generate_walmart_xlsx_from_getlinks_df(
             if expected_type == "string" or clean_text(seller_excel_col).upper() in ["DR", "DS"] or seller_col_name.lower() in ["site start date", "site end date", "fulfillment center id"]:
                 cell.number_format = "@"
 
-            cell.value = formatted_value
+            if formatted_value == "":
+                cell.value = None
+            else:
+                cell.value = formatted_value
 
             status = "OK"
             if note and note != "Skipped":
