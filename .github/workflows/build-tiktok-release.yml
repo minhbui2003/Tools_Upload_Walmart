@@ -1,0 +1,103 @@
+name: Build TikTok Tool Release
+
+on:
+  push:
+    tags:
+      - "tiktok-v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            os: windows-latest
+            artifact_name: Tools_Tiktok-Windows
+          - name: macOS
+            os: macos-latest
+            artifact_name: Tools_Tiktok-macOS
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        working-directory: Tools_Tiktok
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate editable template files
+        working-directory: Tools_Tiktok
+        run: python generate_tiktok_templates.py
+
+      - name: Build Windows executable
+        if: runner.os == 'Windows'
+        working-directory: Tools_Tiktok
+        run: pyinstaller --clean --noconfirm --onefile --windowed --name Tools_Tiktok main.py
+
+      - name: Build macOS app
+        if: runner.os == 'macOS'
+        working-directory: Tools_Tiktok
+        run: pyinstaller --clean --noconfirm --onedir --windowed --name Tools_Tiktok main.py
+
+      - name: Package Windows release
+        if: runner.os == 'Windows'
+        working-directory: Tools_Tiktok
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force release\stage | Out-Null
+          Copy-Item dist\Tools_Tiktok.exe release\stage\
+          Copy-Item templates release\stage\templates -Recurse
+          Copy-Item .env.example release\stage\
+          Copy-Item README.md release\stage\
+          Compress-Archive -Path release\stage\* -DestinationPath release\Tools_Tiktok-Windows.zip -Force
+
+      - name: Package macOS release
+        if: runner.os == 'macOS'
+        working-directory: Tools_Tiktok
+        run: |
+          mkdir -p release/stage
+          cp -R dist/Tools_Tiktok.app release/stage/
+          cp -R templates release/stage/templates
+          cp .env.example release/stage/
+          cp README.md release/stage/
+          cd release/stage
+          zip -r ../Tools_Tiktok-macOS.zip .
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: Tools_Tiktok/release/${{ matrix.artifact_name }}.zip
+
+  release:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref_type == 'tag'
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/Tools_Tiktok-Windows/Tools_Tiktok-Windows.zip
+            artifacts/Tools_Tiktok-macOS/Tools_Tiktok-macOS.zip
